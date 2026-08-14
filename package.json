@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/builtbygio/node-oniguruma/issues"
   },
-  "homepage": "http://atom.github.io/node-oniguruma",
+  "homepage": "https://github.com/builtbygio/node-oniguruma",
   "keywords": [
     "regex",
     "regexp",

@@ -1,10 +1,9 @@
-# oniguruma (Chevron fork)
+# oniguruma (Chevron)
 
-Fork of the Atom-era native at `node-oniguruma` version `7.2.3`.
+**Required exports:** `OnigRegExp`, `OnigScanner`, `OnigString`.
 
-Folded Electron 43 / V8 15 compile fixes that used to live in `script/lib/patch-*.js`:
+- Chevron TextMate mode: `const { OnigRegExp } = require('oniguruma')`
+- first-mate (npm) also requires `OnigScanner` from this package.
 
-- `NODE_MODULE` → `NODE_MODULE_CONTEXT_AWARE`
-- V8 15 API removals (`GetIsolate`, `String::Write`, `WriteUtf8` capacity)
-- `nan@2.28.0`
-- oniguruma GCC 14 `gnu89` / spellchecker MSVC wstring bind, where applicable
+Keep `findNextMatch` / `findNextMatchSync` on the scanner prototype.
+Native addon is `build/Release/onig_scanner.node`.
