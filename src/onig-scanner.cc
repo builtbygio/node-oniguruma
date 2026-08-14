@@ -9,7 +9,7 @@ void OnigScanner::Init(Local<Object> target) {
   tpl->SetClassName(Nan::New<String>("OnigScanner").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
   Local<Context> context = Nan::GetCurrentContext();
-  v8::Isolate* isolate = context->GetIsolate();
+  v8::Isolate* isolate = v8::Isolate::GetCurrent();
   tpl->PrototypeTemplate()->Set(isolate, "_findNextMatch", Nan::New<FunctionTemplate>(OnigScanner::FindNextMatch));
   tpl->PrototypeTemplate()->Set(isolate, "_findNextMatchSync", Nan::New<FunctionTemplate>(OnigScanner::FindNextMatchSync));
   Nan::Set(target, Nan::New<String>("OnigScanner").ToLocalChecked(), tpl->GetFunction(context).ToLocalChecked());
@@ -20,9 +20,14 @@ void InitModule(Local<Object> target) {
   OnigString::Init(target);
 }
 
-NODE_MODULE(onig_scanner, InitModule)
-
-NAN_METHOD(OnigScanner::New) {
+static void onig_scanner_chevron_register(
+    v8::Local<v8::Object> exports,
+    v8::Local<v8::Value> module,
+    v8::Local<v8::Context> context,
+    void* priv) {
+  InitModule(exports);
+}
+NODE_MODULE_CONTEXT_AWARE(onig_scanner, onig_scanner_chevron_register)NAN_METHOD(OnigScanner::New) {
   Nan::HandleScope scope;
   OnigScanner* scanner = new OnigScanner(Local<Array>::Cast(info[0]));
   scanner->Wrap(info.This());

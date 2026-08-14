@@ -14,7 +14,11 @@
         }],
         ['OS=="linux"', {
           'cflags': [
+            '-std=gnu89',
             '-w',
+            '-Wno-error',
+            '-Wno-error=incompatible-pointer-types',
+            '-Wno-incompatible-pointer-types',
           ],
         }],
       ],

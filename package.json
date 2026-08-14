@@ -11,10 +11,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/atom/node-oniguruma.git"
+    "url": "https://github.com/builtbygio/node-oniguruma.git"
   },
   "bugs": {
-    "url": "https://github.com/atom/node-oniguruma/issues"
+    "url": "https://github.com/builtbygio/node-oniguruma/issues"
   },
   "homepage": "http://atom.github.io/node-oniguruma",
   "keywords": [
@@ -29,10 +29,13 @@
     "jasmine-focused": "~1.0.7"
   },
   "dependencies": {
-    "nan": "^2.14.0"
+    "nan": "2.28.0"
   },
   "scripts": {
     "test": "jasmine-focused --captureExceptions spec/",
     "benchmark": "benchmark/benchmark.coffee"
+  },
+  "engines": {
+    "chevron": ">=1.0.0"
   }
 }
