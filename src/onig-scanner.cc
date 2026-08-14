@@ -27,7 +27,9 @@ static void onig_scanner_chevron_register(
     void* priv) {
   InitModule(exports);
 }
-NODE_MODULE_CONTEXT_AWARE(onig_scanner, onig_scanner_chevron_register)NAN_METHOD(OnigScanner::New) {
+NODE_MODULE_CONTEXT_AWARE(onig_scanner, onig_scanner_chevron_register)
+
+NAN_METHOD(OnigScanner::New) {
   Nan::HandleScope scope;
   OnigScanner* scanner = new OnigScanner(Local<Array>::Cast(info[0]));
   scanner->Wrap(info.This());
